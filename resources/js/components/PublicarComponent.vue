@@ -14,6 +14,7 @@
             block
             ></b-form-textarea>
           <input type="file"
+         ref="inputFile"
            class="form-control"
             id="imagen"
              placeholder="Muestranos un momento inolvidable"
@@ -56,6 +57,9 @@
              this.$emit('new',publicacion);
        
           });
+          this.mensaje='';
+      this.$refs.inputFile.value = '';
+       this.imagen=null;
          },
          onFileSelected(event) {
           console.log("se ejecuto");

@@ -34,7 +34,7 @@
             ></b-form-textarea style="text-align: right;">
                 
                    <b-button variant="outline-primary"  v-on:click="newComentario()">Comentar</b-button>
-                Comentarios : {{this.numero_comentarios}}
+                Comentarios : {{this.publicacion.comentarios.length}}
                </form>
                
             </b-card>
@@ -53,12 +53,10 @@
             comentario:null,
             id_publicacion:this.publicacion.id,
             name:this.publicacion.user.name,
-            numero_comentarios:0,
           };
       },
       mounted() {
         console.log(this.publicacion)
-        if(this.publicacion.comentarios>0) this.numero_comentarios = this.publicacion.comentarios.lenght;
     },
     methods:{
     newComentario(){
@@ -70,6 +68,7 @@
              const comentario_actual = response.data;
               this.publicacion.comentarios.push(comentario_actual);
           });
+          this.comentario=null;
          }
     }
 }
